@@ -37,7 +37,7 @@ echo ""
 echo "Panorama - Change SSL TLS Service Profile"
 curl -k -g "https://${panorama}/api?key=${apikey}&type=config&action=edit&xpath=/config/panorama/ssl-tls-service-profile/entry[@name='${certname}-profile']/certificate&element=<certificate>${certname}</certificate>"
 # Another way to change ssl-tls-service-profile
-# Key point: Element should be encode before use in URL
+# Key point: Element should be encode before use in URL. Otherwise you will get follow message "Malformed input to a URL function"
 # curl -k -G -g "https://${panorama}/api?key=${apikey}&type=config&action=edit&xpath=/config/panorama/ssl-tls-service-profile/entry[@name='${certname}-profile']" --data-urlencode "element=<entry name='${certname}-profile'><protocol-settings><min-version>tls1-2</min-version><max-version>max</max-version></protocol-settings><certificate>${certname}</certificate></entry>"
 
 echo ""
